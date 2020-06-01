@@ -4,6 +4,8 @@ import * as React from 'react';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import HalamanCustom from '../screens/HalamanCustom';
+import FetchAPI from '../screens/FetchAPI'
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -32,6 +34,22 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
         }}
       />
+      <BottomTab.Screen
+        name="Custom"
+        component={HalamanCustom}
+        options={{
+          title: 'My Halaman',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="FetchAPI"
+        component={FetchAPI}
+        options={{
+          title: 'Fetch API',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
@@ -41,8 +59,12 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'How to get started';
+      return 'Hai Topping!';
     case 'Links':
       return 'Links to learn more';
+    case 'Custom':
+      return 'Selamat Datang Halaman Custom';
+    case 'FetchAPI':
+      return 'Selamat Datang Fetch API';
   }
 }
