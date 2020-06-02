@@ -24,11 +24,11 @@ const FormLogin = () => {
             {/* <Text>Form Login</Text> */}
             <Item regular style={{ borderColor: '#696969', backgroundColor: '#808080', height: 50 }}>
                 <Input placeholder='Username' placeholderTextColor='#EEEEEE' style={{ color: '#EEEEEE', fontSize: 20 }} />
-                <Icon type="FontAwesome" name="user" style={{ color: '#EEEEEE', fontSize: 20 }} />
+                <Icon type="FontAwesome" name="envelope" style={{ color: '#EEEEEE', fontSize: 20 }} />
             </Item>
             <Item regular style={{ borderColor: '#696969', backgroundColor: '#808080', height: 50, marginTop: 20 }}>
                 <Input placeholder='Password' secureTextEntry={true} placeholderTextColor='#EEEEEE' style={{ color: '#EEEEEE', fontSize: 20 }} />
-                <Icon type="FontAwesome" name="key" style={{ color: '#EEEEEE', fontSize: 20 }} />
+                <Icon type="FontAwesome" name="lock" style={{ color: '#EEEEEE', fontSize: 20 }} />
             </Item>
             <TouchableOpacity style={{ marginTop:9 }}>
                 <Text style={{ fontSize: 19, textAlign: 'right', color:'#EEEEEE'}}>Lupa Password?</Text>
