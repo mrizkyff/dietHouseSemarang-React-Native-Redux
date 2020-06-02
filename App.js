@@ -33,8 +33,8 @@ export default function App(props) {
         {/* <HomeScreen /> */}
         {/* <SplashScreen /> */}
         {/* <LoginScreen /> */}
-        {/* <RegisterScreen /> */}
-        <Login />
+        <RegisterScreen />
+        {/* <Login /> */}
       </View>
     );
   }
