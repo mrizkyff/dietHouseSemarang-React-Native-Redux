@@ -51,7 +51,7 @@ const FormRegister = () => {
             .then(function (response) {
                 // handle success
                 // alert(JSON.stringify(response.data));
-                alert('Registrasi berhasil, silahkan login!')
+                alert('Registrasi berhasil, silahkan login!');
                 // setdata(response.data.data)
                 // console.log(JSON.stringify(response.data))
             })
@@ -64,7 +64,7 @@ const FormRegister = () => {
                 // alert('Finally called');
                 // alert(data);
                 // console.log(data);
-                setUser(initialState);
+                setnewUser(initialState);
 
                 // getDataUsingSimpleGetCall();
             });
