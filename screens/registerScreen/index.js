@@ -51,7 +51,7 @@ const FormRegister = () => {
                 <Input style={{ color: '#eeeeee', fontSize: 20 }} />
             </Item>
             <TouchableOpacity style={{ marginTop: 20, backgroundColor: '#FFBF57', padding: 15, borderRadius: 5 }}>
-                <Text style={{ color: '#EEEEEE', fontSize: 20, fontWeight: '600', alignSelf: 'center', textAlign: 'center' }}>MASUK</Text>
+                <Text style={{ color: '#EEEEEE', fontSize: 20, fontWeight: '600', alignSelf: 'center', textAlign: 'center' }}>DAFTAR</Text>
             </TouchableOpacity>
             <View style={{flexDirection: 'row', alignSelf:'center', marginTop: 15}}>
                 <Text style={{fontSize: 20, color: '#EEEEEE'}}>Sudah punya akun?</Text>
