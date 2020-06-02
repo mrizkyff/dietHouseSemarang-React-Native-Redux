@@ -1,7 +1,8 @@
 import React, { Component, useState } from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, Alert } from 'react-native'
 import { Input, Item, Icon, Button, Label } from "native-base"
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import axios from "axios";
 
 // KOMPONEN
 // logo
@@ -20,6 +21,7 @@ const Logo = () => {
 // form
 const FormRegister = () => {
 
+    // buat initial state
     const initialState = {
         fname: '',
         lname: '',
@@ -30,7 +32,44 @@ const FormRegister = () => {
         alamat: '',
     }
 
+    // buat state
     const [newUser, setnewUser] = useState(initialState)
+
+
+    // fungsi post untuk ke REST API
+    const postNewUser = (newUser) => {
+        axios
+            .post('http://192.168.8.104/restApi-dietHouseSemarang/api/registrasi', {
+                firstname: newUser.fname,
+                lastname: newUser.lname,
+                username: newUser.username,
+                password: newUser.password,
+                email: newUser.email,
+                telp: newUser.telp,
+                alamat: newUser.alamat,
+            })
+            .then(function (response) {
+                // handle success
+                // alert(JSON.stringify(response.data));
+                alert('Registrasi berhasil, silahkan login!')
+                // setdata(response.data.data)
+                // console.log(JSON.stringify(response.data))
+            })
+            .catch(function (error) {
+                // handle error
+                alert(error.message);
+            })
+            .finally(function () {
+                // always executed
+                // alert('Finally called');
+                // alert(data);
+                // console.log(data);
+                setUser(initialState);
+
+                // getDataUsingSimpleGetCall();
+            });
+    };
+
 
     return (
         <View style={styles.FormRegister}>
@@ -63,7 +102,7 @@ const FormRegister = () => {
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Alamat</Label>
                 <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, alamat: text })} />
             </Item>
-            <TouchableOpacity style={{ marginTop: 20, backgroundColor: '#FFBF57', padding: 15, borderRadius: 5 }}>
+            <TouchableOpacity style={{ marginTop: 20, backgroundColor: '#FFBF57', padding: 15, borderRadius: 5 }} onPress={() => postNewUser(newUser)}>
                 <Text style={{ color: '#EEEEEE', fontSize: 20, fontWeight: '600', alignSelf: 'center', textAlign: 'center' }}>DAFTAR</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 15 }}>
@@ -72,7 +111,7 @@ const FormRegister = () => {
                     <Text style={{ fontSize: 20, color: '#FFBF57' }}> Login</Text>
                 </TouchableOpacity>
             </View>
-            <Text>{'input user:'+newUser.fname+newUser.lname+newUser.username+newUser.password+newUser.email+newUser.telp+newUser.alamat}</Text>
+            <Text>{'input user:' + newUser.fname + newUser.lname + newUser.username + newUser.password + newUser.email + newUser.telp + newUser.alamat}</Text>
 
         </View >
     )
