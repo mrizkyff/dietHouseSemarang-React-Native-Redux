@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { Text, View, StyleSheet, Image } from 'react-native'
 import { Input, Item, Icon, Button, Label } from "native-base"
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -19,46 +19,60 @@ const Logo = () => {
 
 // form
 const FormRegister = () => {
+
+    const initialState = {
+        fname: '',
+        lname: '',
+        username: '',
+        password: '',
+        email: '',
+        telp: '',
+        alamat: '',
+    }
+
+    const [newUser, setnewUser] = useState(initialState)
+
     return (
         <View style={styles.FormRegister}>
             {/* <Text>Form Login</Text> */}
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Nama Depan</Label>
-                <Input style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, fname: text })} />
             </Item>
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Nama Belakang</Label>
-                <Input style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, lname: text })} />
             </Item>
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Username</Label>
-                <Input style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, username: text })} />
             </Item>
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Password</Label>
-                <Input secureTextEntry={true} style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input secureTextEntry={true} style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, password: text })} />
             </Item>
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Email</Label>
-                <Input style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, email: text })} />
             </Item>
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Telp.</Label>
-                <Input style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, telp: text })} />
             </Item>
             <Item floatingLabel style={{ marginTop: 10 }}>
                 <Label style={{ color: '#EEEEEE', fontSize: 18, }}>Alamat</Label>
-                <Input style={{ color: '#eeeeee', fontSize: 20 }} />
+                <Input style={{ color: '#eeeeee', fontSize: 20 }} onChangeText={(text) => setnewUser({ ...newUser, alamat: text })} />
             </Item>
             <TouchableOpacity style={{ marginTop: 20, backgroundColor: '#FFBF57', padding: 15, borderRadius: 5 }}>
                 <Text style={{ color: '#EEEEEE', fontSize: 20, fontWeight: '600', alignSelf: 'center', textAlign: 'center' }}>DAFTAR</Text>
             </TouchableOpacity>
-            <View style={{flexDirection: 'row', alignSelf:'center', marginTop: 15}}>
-                <Text style={{fontSize: 20, color: '#EEEEEE'}}>Sudah punya akun?</Text>
+            <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 15 }}>
+                <Text style={{ fontSize: 20, color: '#EEEEEE' }}>Sudah punya akun?</Text>
                 <TouchableOpacity>
-                    <Text style={{fontSize: 20, color: '#FFBF57'}}> Login</Text>
+                    <Text style={{ fontSize: 20, color: '#FFBF57' }}> Login</Text>
                 </TouchableOpacity>
             </View>
+            <Text>{'input user:'+newUser.fname+newUser.lname+newUser.username+newUser.password+newUser.email+newUser.telp+newUser.alamat}</Text>
 
         </View >
     )
