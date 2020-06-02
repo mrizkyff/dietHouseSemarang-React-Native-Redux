@@ -1,4 +1,6 @@
 import  SplashScreen from "./splashScreen";
 import LoginScreen from './loginScreen'
+import RegisterScreen from "./registerScreen";
+import Login from './login'
 
-export {SplashScreen, LoginScreen};
+export {SplashScreen, LoginScreen, RegisterScreen, Login};
