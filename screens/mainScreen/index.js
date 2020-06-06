@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react'
 import { Text, View, StatusBar, StyleSheet, FlatList, Image } from 'react-native'
-import { Card, CardItem, Body, Item, Input, Icon, H3} from "native-base";
+import { Card, CardItem, Body, Item, Input, Icon, H3 } from "native-base";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from "axios";
 
@@ -62,26 +62,32 @@ const mainScreen = () => {
             <StatusBar barStyle='dark-content' />
 
             <SearchBar />
-            
+
             {/* awal komponen banner */}
             <View style={styles.bannerTop}>
-                <Text style={{color: '#696969', fontSize: 17}}>Apa yang baru?</Text>
                 <Card>
                     <CardItem>
                         <Body>
+                            <Text style={{ color: '#696969', fontSize: 17, fontFamily: 'droid-sans' }}>Apa yang baru?</Text>
                             <FlatList
                                 horizontal
                                 data={banner}
                                 keyExtractor={({ id }, index) => id}
                                 renderItem={({ item }) => (
                                     <View>
-                                        {/* <Text>{item.picture},{item.id}</Text> */}
-                                        <Image
-                                            style={{ width: 230, height: 100, resizeMode: 'cover', marginLeft: 5, marginRight: 5}}
-                                            source={{
-                                                uri: `http://192.168.8.104/restApi-dietHouseSemarang/asset/img/banner/${item.picture}`,
-                                            }}
-                                        />
+                                        <Card>
+                                            <CardItem>
+                                                <Body>
+                                                    <Image
+                                                        style={{ width: 230, height: 100, resizeMode: 'cover' }}
+                                                        source={{
+                                                            uri: `http://192.168.8.104/restApi-dietHouseSemarang/asset/img/banner/${item.picture}`,
+                                                        }}
+                                                    />
+                                                    <Text style={{ color: '#696969', fontFamily: 'droid-sans' }}>{item.captions}</Text>
+                                                </Body>
+                                            </CardItem>
+                                        </Card>
                                     </View>
                                 )}
                             />
@@ -90,6 +96,10 @@ const mainScreen = () => {
                 </Card>
             </View>
             {/* akhir komponen banner */}
+
+            {/* bagian bottom navigator */}
+
+            {/* akhir bagian bottom navigator */}
 
             <Text> halaman mainScreen </Text>
         </View>
@@ -110,7 +120,7 @@ const styles = StyleSheet.create({
     },
     bannerTop: {
         width: '95%',
-        top: -200,
+        top: -195,
     }
 })
 
