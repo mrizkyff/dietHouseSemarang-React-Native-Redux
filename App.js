@@ -12,7 +12,7 @@ import LinkingConfiguration from './navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
 
-import { SplashScreen, LoginScreen, RegisterScreen, Login} from "./screens";
+import { SplashScreen, LoginScreen, RegisterScreen, Login, MainScreen} from "./screens";
 
 export default function App(props) {
   const isLoadingComplete = useCachedResources();
@@ -34,7 +34,8 @@ export default function App(props) {
         {/* <SplashScreen /> */}
         {/* <LoginScreen /> */}
         {/* <RegisterScreen /> */}
-        <Login />
+        {/* <Login /> */}
+        <MainScreen />
       </View>
     );
   }
