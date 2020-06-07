@@ -5,16 +5,20 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from "axios";
 
 
+
+
+
 const SearchBar = () => {
     return (
         <View style={styles.searchBar}>
-            <Card>
-                <CardItem>
+            <Text style={styles.judulExplore}>Explore</Text>
+            <Card style={styles.searchCard}>
+                <CardItem >
                     <Body>
                         <Item regular style={{ height: 25, borderColor: 'white' }}>
-                            <Input placeholder='Cari menu kesukaan anda ...' placeholderTextColor='#696969' style={{ color: '#696969', fontSize: 17 }} />
+                            <Input placeholder='Cari menu kesukaan anda ...' placeholderTextColor='#D6D6D6' style={{ color: '#696969', fontSize: 17 }} />
                             <TouchableOpacity>
-                                <Icon type="FontAwesome" name="search" style={{ color: '#696969', fontSize: 20 }} />
+                                <Icon type="FontAwesome" name="search" style={{ color: '#D6D6D6', fontSize: 20 }} />
                             </TouchableOpacity>
                         </Item>
                     </Body>
@@ -36,7 +40,7 @@ const mainScreen = () => {
 
     const getDataUsingSimpleGetCall = () => {
         axios
-            .get('http://192.168.8.104/restApi-dietHouseSemarang/api/banner/banner')
+            .get('http://192.168.8.101/restApi-dietHouseSemarang/api/banner/banner')
             .then(function (response) {
                 // handle success
                 // alert(JSON.stringify(response.data));
@@ -49,7 +53,7 @@ const mainScreen = () => {
             })
             .finally(function () {
                 // always executed
-                alert('Finally called');
+                // alert('Finally called');
                 // alert(data);
                 console.log(banner);
 
@@ -59,49 +63,46 @@ const mainScreen = () => {
     return (
         <View style={styles.container}>
 
-            <StatusBar barStyle='dark-content' />
+            <StatusBar barStyle='light-content' backgroundColor='#FFBF57' />
 
             <SearchBar />
 
             {/* awal komponen banner */}
             <View style={styles.bannerTop}>
-                <Card>
-                    <CardItem>
-                        <Body>
-                            <Text style={{ color: '#696969', fontSize: 17, fontFamily: 'droid-sans' }}>Apa yang baru?</Text>
-                            <FlatList
-                                horizontal
-                                data={banner}
-                                keyExtractor={({ id }, index) => id}
-                                renderItem={({ item }) => (
-                                    <View>
-                                        <Card>
-                                            <CardItem>
-                                                <Body>
-                                                    <Image
-                                                        style={{ width: 230, height: 100, resizeMode: 'cover' }}
-                                                        source={{
-                                                            uri: `http://192.168.8.104/restApi-dietHouseSemarang/asset/img/banner/${item.picture}`,
-                                                        }}
-                                                    />
-                                                    <Text style={{ color: '#696969', fontFamily: 'droid-sans' }}>{item.captions}</Text>
-                                                </Body>
-                                            </CardItem>
-                                        </Card>
-                                    </View>
-                                )}
-                            />
-                        </Body>
-                    </CardItem>
-                </Card>
+                <Text style={{
+                    color: '#696969', fontSize: 17, marginLeft: 5, marginTop: 35, fontWeight
+                        : '600'
+                }}>Apa yang baru?</Text>
+                <FlatList
+                    horizontal
+                    data={banner}
+                    keyExtractor={({ id }, index) => id}
+                    renderItem={({ item }) => (
+                        <View>
+                            <Card>
+                                <CardItem>
+                                    <Body>
+                                        {/* <Text>{item.captions}</Text> */}
+                                        <Image
+                                            style={{ width: 299, height: 130, resizeMode: 'cover' }}
+                                            source={{
+                                                uri: `http://192.168.8.101/restApi-dietHouseSemarang/asset/img/banner/${item.picture}`,
+                                            }}
+                                        />
+                                        <Text style={{ color: '#696969', fontFamily: 'droid-sans', marginTop: 2 }}>{item.captions}</Text>
+                                    </Body>
+                                </CardItem>
+                            </Card>
+                        </View>
+                    )}
+                />
             </View>
             {/* akhir komponen banner */}
 
             {/* bagian bottom navigator */}
-
+            <Text>Bottom Nav</Text>
             {/* akhir bagian bottom navigator */}
 
-            <Text> halaman mainScreen </Text>
         </View>
     )
 }
@@ -112,15 +113,28 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        backgroundColor: '#EEEEEE'
     },
     searchBar: {
+        width: '100%',
+        top: 0,
+        height: 150,
+        backgroundColor: '#FFBF57',
+    },
+    searchCard: {
+        top: 4,
         width: '95%',
-        top: 20,
-        height: 50,
+        alignSelf: 'center',
+    },
+    judulExplore: {
+        marginLeft: 8,
+        marginTop: 30,
+        color: 'white',
+        fontSize: 50,
     },
     bannerTop: {
         width: '95%',
-        top: -195,
+        top: -160,
     }
 })
 
